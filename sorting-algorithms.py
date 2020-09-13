@@ -119,6 +119,8 @@ def partition(a, l, r):
 
 # Function to represent array as bars
 def draw_array(arr, base_color, title, time):
+    global frame_number
+
     # Event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -142,8 +144,10 @@ def draw_array(arr, base_color, title, time):
         pygame.draw.rect(window, color, rect)
     
     # Add text and update
-    window.blit(title_text, (20,20))
-    window.blit(time_text, (20, 80))
+    if title:
+        window.blit(title_text, (20,20))
+    if time:
+        window.blit(time_text, (20, 80))
     pygame.display.update()
 
     # Save frame if required
